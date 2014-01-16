@@ -5,12 +5,16 @@ var route = require('router')()
 
 route.get('/', function(req, res) {
   res.writeHead(200, {"Content-Type": "text/html"});
-  console.log(req)
-  res.write(
-    fs.readFileSync("index.html", "utf8")
-      .toString()
-      .replace('{{FACE}}', cool())
-  )
+  console.log(req.headers['user-agent'])
+
+  if (req.headers['user-agent'].match(/curl/)) {
+    // cURL
+    res.write(cool());
+  } else {
+    // Browser
+    res.write(fs.readFileSync("index.html", "utf8").toString().replace('{{FACE}}', cool()))
+  }
+
   res.end();
 });
 
