@@ -3,17 +3,17 @@ var fs = require('fs');
 var cool = require('cool-ascii-faces');
 var route = require('router')();
 
-route.get('/{hash}?', function(req, res) {
+route.all(function(req, res) {
 
-  var hash = req.params.hash;
+  var queryIndex = req.url.indexOf('?');
+  var hash = queryIndex === -1 ? req.url.substr(1, req.url.length) : req.url.substr(1, queryIndex);
   var face;
 
-  if (hash) {
-    hash = decodeURIComponent(hash);
+  if (hash.length > 1) {
     face = new Buffer(hash, 'base64').toString('utf-8');
   } else {
     face = cool();
-    hash = encodeURIComponent(new Buffer(face).toString('base64'));
+    hash = new Buffer(face).toString('base64');
   }
 
   res.writeHead(200, {"Content-Type": "text/html"});
