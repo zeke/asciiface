@@ -1,9 +1,8 @@
 var http = require('http');
 var fs = require('fs');
 var cool = require('cool-ascii-faces');
-var route = require('router')();
 
-route.all(function(req, res) {
+http.createServer(function (req, res) {
 
   var queryIndex = req.url.indexOf('?');
   var hash = queryIndex === -1 ? req.url.substr(1, req.url.length) : req.url.substr(1, queryIndex);
@@ -29,6 +28,4 @@ route.all(function(req, res) {
   }
 
   res.end();
-});
-
-http.createServer(route).listen(process.env.PORT || 5000);
+}).listen(process.env.PORT || 5000);
