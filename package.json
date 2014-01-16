@@ -1,0 +1,33 @@
+{
+  "name": "asciiface",
+  "version": "0.0.0",
+  "description": "A webservice that dishes out random ascii faces. Cool ones.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeke/asciiface"
+  },
+  "keywords": [
+    "ascii",
+    "face",
+    "emoticon",
+    "emoji",
+    "service"
+  ],
+  "author": "zeke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeke/asciiface/issues"
+  },
+  "homepage": "https://github.com/zeke/asciiface",
+  "dependencies": {
+    "cool-ascii-faces": "~1.3.0",
+    "router": "~0.6.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
